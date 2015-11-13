@@ -11,15 +11,15 @@
 
 #include "Quaternion.h"
 
-#ifdef __CYGWIN__
-#define GLUT_DISABLE_ATEXIT_HACK
-#include <windows.h>
+// #ifdef _LINUX_
+// #define GLUT_DISABLE_ATEXIT_HACK
+// #include <windows.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+// #else
+// #include <GLUT/glut.h>
+// #endif
 
 namespace DDG
 {

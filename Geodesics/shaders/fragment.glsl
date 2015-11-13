@@ -48,4 +48,3 @@ void main()
    gl_FragColor.rgb = diffuse(N,L)*color + .5*specular(N,L,E)*one + .5*fresnel(N,E)*one;
    gl_FragColor.a = 1.;
 }
-

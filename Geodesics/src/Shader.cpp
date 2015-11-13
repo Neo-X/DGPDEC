@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 namespace DDG
@@ -86,7 +87,9 @@ namespace DDG
    
       shader = glCreateShader( shaderType );
       const char* source_c_str = source.c_str();
-      glShaderSource( shader, 1, &(source_c_str), NULL );
+      GLint sourcelength = source.size();
+      std::cout << "Shader source" << source << std::endl;
+      glShaderSource( shader, 1, &(source_c_str), &sourcelength );
    
       glCompileShader( shader );
       GLint compileStatus;
@@ -130,11 +133,10 @@ namespace DDG
          return false;
       }
 
-      string line;
-      while( getline( in, line ))
-      {
-         source += line;
-      }
+      std::stringstream shaderData;
+      shaderData << in.rdbuf();  //Loads the entire string into a string stream.
+      in.close();
+      source = shaderData.str();
 
       return true;
    }
